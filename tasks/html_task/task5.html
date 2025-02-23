@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+        table {
+            width: 100%;
+        }
+        td {
+            padding: 5px;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 5px;
+            margin: 3px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .gender-group {
+            display: flex;
+            align-items: center;
+        }
+        .gender-group input {
+            width: auto;
+            margin-right: 5px;
+        }
+        .languages input {
+            width: auto;
+            margin-right: 5px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #218838;
+        }
+        .login-link {
+            text-align: right;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2 style="text-align: center; color: blue;">Registration Form</h2>
+        <form action="submit_form.php" method="POST">
+            <table>
+                <tr>
+                    <td>First Name</td>
+                    <td><input type="text" name="firstname" required></td>
+                </tr>
+                <tr>
+                    <td>Last Name</td>
+                    <td><input type="text" name="lastname" required></td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td><input type="email" name="email" required></td>
+                </tr>
+                <tr>
+                    <td>Password</td>
+                    <td><input type="password" name="password" required></td>
+                </tr>
+                <tr>
+                    <td>Re-enter Password</td>
+                    <td><input type="password" name="repassword" required></td>
+                </tr>
+                <tr>
+                    <td>Gender:</td>
+                    <td class="gender-group">
+                        <input type="radio" name="gender" value="male"> Male
+                        <input type="radio" name="gender" value="female"> Female
+                    </td>
+                </tr>
+                <tr>
+                    <td>Age:</td>
+                    <td><input type="number" name="age" required></td>
+                </tr>
+                <tr>
+                    <td>Phone Number:</td>
+                    <td><input type="tel" name="phone" required></td>
+                </tr>
+                <tr>
+                    <td>Address:</td>
+                    <td><textarea name="address" rows="3" required></textarea></td>
+                </tr>
+                <tr>
+                    <td>State:</td>
+                    <td><input type="text" name="state" required></td>
+                </tr>
+                <tr>
+                    <td>Country:</td>
+                    <td>
+                        <select name="country">
+                            <option value="">Choose your country</option>
+                            <option value="India">India</option>
+                            <option value="USA">USA</option>
+                            <option value="UK">UK</option>
+                            <option value="Canada">Canada</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Languages Known</td>
+                    <td class="languages">
+                        <input type="checkbox" name="languages" value="English"> English
+                        <input type="checkbox" name="languages" value="Kannada"> Kannada
+                        <input type="checkbox" name="languages" value="Hindi"> Hindi
+                        <input type="checkbox" name="languages" value="Telugu"> Telugu
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="checkbox" name="declaration" required> Hereby I declare all the given details are true to the best of my knowledge
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="login-link">
+                        <a href="https://ethnus.com">Log in to <b>Ethnus</b> website</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <button type="submit">Register</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+</body>
+</html>
