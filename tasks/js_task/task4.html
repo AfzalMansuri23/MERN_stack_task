@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Show Date and Time</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    button { padding: 10px 20px; font-size: 16px; }
+    #output { margin-top: 20px; font-size: 18px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h2>Get Current Date and Time</h2>
+  <button onclick="showDateTime()">Show Date & Time</button>
+  <p id="output"></p>
+
+  <script>
+    function formatNumber(n) {
+      return n < 10 ? '0' + n : n;
+    }
+
+    function showDateTime() {
+      const now = new Date();
+      const year = now.getFullYear();
+      const month = formatNumber(now.getMonth() + 1); // Months are 0-indexed
+      const day = formatNumber(now.getDate());
+      const hours = formatNumber(now.getHours());
+      const minutes = formatNumber(now.getMinutes());
+      const seconds = formatNumber(now.getSeconds());
+
+      const formatted = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+      document.getElementById('output').innerText = `Current Date & Time: ${formatted}`;
+    }
+  </script>
+</body>
+</html>

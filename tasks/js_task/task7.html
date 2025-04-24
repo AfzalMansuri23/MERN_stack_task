@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Train Animation with Speed Control</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #e0f7fa;
+      overflow-x: hidden;
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+
+    .track {
+      position: relative;
+      height: 200px;
+      margin-top: 100px;
+    }
+
+    .train {
+      position: absolute;
+      left: -400px;
+      width: 300px;
+      animation-name: moveTrain;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+    }
+
+    @keyframes moveTrain {
+      0% { left: -400px; }
+      100% { left: 100%; }
+    }
+
+    .controls {
+      margin-top: 20px;
+    }
+
+    .controls button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin: 0 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>🚂 Train Animation</h2>
+  <div class="track">
+    <img class="train" id="train" src="https://media.giphy.com/media/3oKIPwoeGErMmaI43C/giphy.gif" alt="Moving Train">
+  </div>
+
+  <div class="controls">
+    <button onclick="setSpeed('slow')">Slow</button>
+    <button onclick="setSpeed('normal')">Normal</button>
+    <button onclick="setSpeed('fast')">Fast</button>
+  </div>
+
+  <script>
+    const train = document.getElementById("train");
+
+    function setSpeed(speed) {
+      if (speed === "slow") {
+        train.style.animationDuration = "12s";
+      } else if (speed === "normal") {
+        train.style.animationDuration = "8s";
+      } else if (speed === "fast") {
+        train.style.animationDuration = "4s";
+      }
+    }
+
+    // Set default speed
+    setSpeed("normal");
+  </script>
+</body>
+</html>

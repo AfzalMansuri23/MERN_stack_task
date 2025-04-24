@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Instagram Login Clone</title>
+  <style>
+    body {
+      background-color: #fafafa;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .login-box {
+      background: white;
+      border: 1px solid #dbdbdb;
+      padding: 40px;
+      width: 300px;
+      text-align: center;
+    }
+
+    .login-box img {
+      width: 175px;
+      margin-bottom: 30px;
+    }
+
+    .login-box input {
+      width: 100%;
+      padding: 10px;
+      margin: 6px 0;
+      border: 1px solid #dbdbdb;
+      background-color: #fafafa;
+    }
+
+    .login-box button {
+      width: 100%;
+      padding: 10px;
+      background-color: #3897f0;
+      color: white;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .login-box button:hover {
+      background-color: #318ce7;
+    }
+
+    .login-box .or {
+      margin: 20px 0;
+      color: #999;
+      position: relative;
+    }
+
+    .login-box .or::before,
+    .login-box .or::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      width: 40%;
+      height: 1px;
+      background: #ccc;
+    }
+
+    .login-box .or::before {
+      left: 0;
+    }
+
+    .login-box .or::after {
+      right: 0;
+    }
+
+    .login-box .signup {
+      margin-top: 20px;
+      font-size: 14px;
+    }
+
+    .login-box .signup a {
+      text-decoration: none;
+      color: #00376b;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-box">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Instagram_logo.svg" alt="Instagram Logo" />
+    
+    <input type="text" placeholder="Phone number, username, or email" required>
+    <input type="password" placeholder="Password" required>
+    
+    <button>Log In</button>
+
+    <div class="or">OR</div>
+    
+    <p class="signup">Don't have an account? <a href="#">Sign up</a></p>
+  </div>
+
+</body>
+</html>

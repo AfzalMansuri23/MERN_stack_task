@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact Form</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; max-width: 500px; margin: auto; }
+    input, textarea, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      font-size: 16px;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <h2>Contact Us</h2>
+  <form id="contactForm">
+    <input type="text" id="name" placeholder="Your Name" required />
+    <input type="email" id="email" placeholder="Your Email" required />
+    <input type="url" id="website" placeholder="Your Website (e.g., https://example.com)" required />
+    <textarea id="message" placeholder="Your Message" rows="5" required></textarea>
+    <button type="submit">Submit</button>
+  </form>
+
+  <p id="output" style="margin-top: 20px; font-weight: bold;"></p>
+
+  <script>
+    document.getElementById("contactForm").addEventListener("submit", function(e) {
+      e.preventDefault(); // Prevent form from submitting traditionally
+      
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const website = document.getElementById("website").value.trim();
+      const message = document.getElementById("message").value.trim();
+
+      const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+      const urlPattern = /^(https?:\/\/)?([\w\-])+\.{1}([a-zA-Z]{2,63})([\/\w\-]*)*\/?$/;
+
+      if (!emailPattern.test(email)) {
+        document.getElementById("output").innerText = "Please enter a valid email address.";
+        return;
+      }
+
+      if (!urlPattern.test(website)) {
+        document.getElementById("output").innerText = "Please enter a valid website URL.";
+        return;
+      }
+
+      document.getElementById("output").innerText = "Form submitted successfully!";
+    });
+  </script>
+</body>
+</html>

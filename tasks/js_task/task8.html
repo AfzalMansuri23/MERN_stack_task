@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration Form with Password Strength</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f7f7f7;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .form-container {
+      background-color: white;
+      padding: 30px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      width: 300px;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    .error {
+      color: red;
+      font-size: 12px;
+      margin-top: -8px;
+    }
+    .password-strength {
+      margin-top: 5px;
+      font-size: 14px;
+    }
+    .weak {
+      color: red;
+    }
+    .good {
+      color: orange;
+    }
+    .strong {
+      color: green;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-container">
+    <h2>Registration Form</h2>
+    <form id="registrationForm" onsubmit="return validateForm()">
+      <input type="text" id="username" placeholder="Username" required />
+      <div id="usernameError" class="error"></div>
+
+      <input type="email" id="email" placeholder="Email" required />
+      <div id="emailError" class="error"></div>
+
+      <input type="password" id="password" placeholder="Password" required oninput="checkPasswordStrength()" />
+      <div id="passwordError" class="error"></div>
+      <div id="passwordStrength" class="password-strength"></div>
+
+      <input type="password" id="confirmPassword" placeholder="Confirm Password" required />
+      <div id="confirmPasswordError" class="error"></div>
+
+      <button type="submit">Register</button>
+    </form>
+  </div>
+
+  <script>
+    function validateForm() {
+      let isValid = true;
+
+      // Clear previous errors
+      document.getElementById('usernameError').textContent = '';
+      document.getElementById('emailError').textContent = '';
+      document.getElementById('passwordError').textContent = '';
+      document.getElementById('confirmPasswordError').textContent = '';
+      document.getElementById('passwordStrength').textContent = '';
+
+      // Get form field values
+      const username = document.getElementById('username').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value.trim();
+      const confirmPassword = document.getElementById('confirmPassword').value.trim();
+
+      // Validate username (no empty field)
+      if (!username) {
+        document.getElementById('usernameError').textContent = 'Username is required.';
+        isValid = false;
+      }
+
+      // Validate email (no empty field, and basic email format)
+      const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+      if (!email || !emailPattern.test(email)) {
+        document.getElementById('emailError').textContent = 'Please enter a valid email address.';
+        isValid = false;
+      }
+
+      // Validate password (no empty field)
+      if (!password) {
+        document.getElementById('passwordError').textContent = 'Password is required.';
+        isValid = false;
+      }
+
+      // Validate password confirmation
+      if (password !== confirmPassword) {
+        document.getElementById('confirmPasswordError').textContent = 'Passwords do not match.';
+        isValid = false;
+      }
+
+      return isValid;
+    }
+
+    function checkPasswordStrength() {
+      const password = document.getElementById('password').value;
+      const strengthText = document.getElementById('passwordStrength');
+
+      let strength = "Weak";
+      let colorClass = "weak";
+
+      // Check password strength
+      const strongPasswordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+      const goodPasswordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$!%*?&]{6,}$/;
+      
+      if (strongPasswordPattern.test(password)) {
+        strength = "Strong";
+        colorClass = "strong";
+      } else if (goodPasswordPattern.test(password)) {
+        strength = "Good";
+        colorClass = "good";
+      }
+
+      strengthText.textContent = `Password Strength: ${strength}`;
+      strengthText.className = `password-strength ${colorClass}`;
+    }
+  </script>
+
+</body>
+</html>
